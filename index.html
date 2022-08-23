@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/tailwind.css" />
+    <title>TailwindCSS Boilerplate</title>
+  </head>
+  <body class="">
+    <div class="relative m-auto max-w-5xl">
+      <div class="fade hidden" id="mySlides">
+        <img src="https://picsum.photos/800/400" class="w-full" />
+        <div
+          class="absolute bottom-2 w-full bg-gray-900 px-2 py-3 text-center text-base text-gray-200"
+        >
+          Caption Text
+        </div>
+      </div>
+
+      <div class="fade hidden" id="mySlides">
+        <img src="https://via.placeholder.com/800x400" class="w-full" />
+        <div
+          class="absolute bottom-2 w-full bg-gray-900 px-2 py-3 text-center text-base text-gray-200"
+        >
+          Caption Two
+        </div>
+      </div>
+
+      <div class="fade hidden" id="mySlides">
+        <img src="https://picsum.photos/800/400" class="w-full" />
+        <div
+          class="absolute bottom-2 w-full bg-gray-900 px-2 py-3 text-center text-base text-gray-200"
+        >
+          Caption Three
+        </div>
+      </div>
+
+      <a
+        class="absolute top-1/2 -mt-6 w-auto cursor-pointer rounded-sm p-4 font-bold text-white hover:bg-gray-700"
+        onclick="plusSlides(-1)"
+        >❮</a
+      >
+      <a
+        class="absolute top-1/2 right-0 -mt-6 w-auto cursor-pointer rounded-sm p-4 font-bold text-white hover:bg-gray-700"
+        onclick="plusSlides(1)"
+        >❯</a
+      >
+    </div>
+    <br />
+
+    <div style="text-align: center">
+      <span
+        id="dot"
+        class="mx-0 my-0.5 inline-block h-4 w-4 cursor-pointer rounded-full bg-gray-600"
+        onclick="currentSlide(1)"
+      ></span>
+      <span
+        id="dot"
+        class="mx-0 my-0.5 inline-block h-4 w-4 cursor-pointer rounded-full bg-gray-400"
+        onclick="currentSlide(2)"
+      ></span>
+      <span
+        id="dot"
+        class="mx-0 my-0.5 inline-block h-4 w-4 cursor-pointer rounded-full bg-gray-400"
+        onclick="currentSlide(3)"
+      ></span>
+    </div>
+
+    <script>
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function currentSlide(n) {
+        showSlides((slideIndex = n));
+      }
+
+      function showSlides(n) {
+        let i;
+        let slides = document.querySelectorAll("#mySlides");
+        let dots = document.querySelectorAll("#dot");
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(
+            "bg-gray-400",
+            "bg-gray-600"
+          );
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " bg-gray-400";
+      }
+    </script>
+  </body>
+</html>
